@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ads Optimizer Pro — Optimisez vos campagnes Amazon en 2 minutes</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #FF9900;
+  --orange-dark: #e68a00;
+  --black: #0a0a0a;
+  --dark: #111111;
+  --dark2: #1a1a1a;
+  --gray: #888;
+  --light: #f5f4f0;
+  --white: #ffffff;
+  --green: #00c896;
+  --red: #ff4444;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ======================== HERO ======================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255,153,0,0.15) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,153,0,0.12);
+  border: 1px solid rgba(255,153,0,0.3);
+  color: var(--orange);
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 32px;
+  animation: fadeDown 0.6s ease both;
+}
+
+.badge .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  max-width: 900px;
+  animation: fadeDown 0.7s ease 0.1s both;
+}
+
+.hero h1 span { color: var(--orange); }
+
+.hero p {
+  margin-top: 24px;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #aaa;
+  max-width: 560px;
+  line-height: 1.6;
+  font-weight: 300;
+  animation: fadeDown 0.7s ease 0.2s both;
+}
+
+.cta-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeDown 0.7s ease 0.3s both;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: var(--black);
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  background: var(--orange-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255,153,0,0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  padding: 16px 36px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: #666;
+  background: rgba(255,255,255,0.05);
+}
+
+.stats-row {
+  display: flex;
+  gap: 48px;
+  margin-top: 64px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeDown 0.7s ease 0.4s both;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--orange);
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* ======================== DASHBOARD MOCKUP ======================== */
+.mockup-section {
+  padding: 0 24px 100px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.mockup-wrapper {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+}
+
+.mockup-bar {
+  background: #1a1a1a;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #222;
+}
+
+.mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.mockup-url {
+  background: #222;
+  border-radius: 6px;
+  padding: 5px 16px;
+  font-size: 0.75rem;
+  color: #666;
+  margin-left: 12px;
+}
+
+.mockup-content {
+  padding: 24px;
+}
+
+.mock-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.mock-metric {
+  background: #1a1a1a;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.mock-metric-label {
+  font-size: 0.72rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mock-metric-value {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.mock-metric-delta {
+  font-size: 0.72rem;
+  margin-top: 4px;
+}
+
+.mock-table {
+  background: #1a1a1a;
+  border: 1px solid #222;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mock-table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr;
+  padding: 10px 16px;
+  border-bottom: 1px solid #222;
+}
+
+.mock-th {
+  font-size: 0.68rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mock-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr;
+  padding: 10px 16px;
+  border-bottom: 1px solid #1e1e1e;
+  align-items: center;
+  transition: background 0.15s;
+}
+
+.mock-row:hover { background: rgba(255,255,255,0.02); }
+.mock-row:last-child { border-bottom: none; }
+
+.mock-td { font-size: 0.8rem; color: #ccc; }
+
+.badge-scale { background: rgba(0,200,150,0.15); color: var(--green); padding: 3px 10px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; display: inline-block; }
+.badge-couper { background: rgba(255,68,68,0.15); color: var(--red); padding: 3px 10px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; display: inline-block; }
+.badge-opt { background: rgba(255,153,0,0.15); color: var(--orange); padding: 3px 10px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; display: inline-block; }
+.badge-obs { background: rgba(255,255,255,0.08); color: #888; padding: 3px 10px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; display: inline-block; }
+
+/* ======================== BENEFITS ======================== */
+.section {
+  padding: 100px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  max-width: 600px;
+}
+
+.section-title span { color: var(--orange); }
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+
+.benefit-card {
+  background: #111;
+  border: 1px solid #1e1e1e;
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--orange), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.benefit-card:hover {
+  border-color: #2a2a2a;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.benefit-card:hover::before { opacity: 1; }
+
+.benefit-icon {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.benefit-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.benefit-desc {
+  font-size: 0.88rem;
+  color: #777;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ======================== HOW IT WORKS ======================== */
+.how-section {
+  background: #0d0d0d;
+  padding: 100px 24px;
+}
+
+.how-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 56px;
+}
+
+.step {
+  position: relative;
+}
+
+.step-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  color: #1e1e1e;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.step-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.step-desc {
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.step-connector {
+  position: absolute;
+  top: 32px;
+  right: -20px;
+  color: #2a2a2a;
+  font-size: 1.5rem;
+}
+
+/* ======================== DECISIONS ======================== */
+.decisions-section {
+  padding: 100px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.decisions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 56px;
+}
+
+.decision-card {
+  background: #111;
+  border: 1px solid #1e1e1e;
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.decision-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.decision-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.decision-desc {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* ======================== CTA FINAL ======================== */
+.cta-section {
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,153,0,0.1) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cta-section h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  max-width: 700px;
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+.cta-section h2 span { color: var(--orange); }
+
+.cta-section p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.cta-section .btn-primary {
+  position: relative;
+  font-size: 1.1rem;
+  padding: 18px 48px;
+}
+
+.no-card {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+/* ======================== FOOTER ======================== */
+footer {
+  border-top: 1px solid #1a1a1a;
+  padding: 40px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+}
+
+.footer-brand span { color: var(--orange); }
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: #aaa; }
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: #333;
+}
+
+/* ======================== NAV ======================== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav-brand {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.nav-brand span { color: var(--orange); }
+
+.nav-cta {
+  background: var(--orange);
+  color: var(--black);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-cta:hover {
+  background: var(--orange-dark);
+  transform: translateY(-1px);
+}
+
+/* ======================== ANIMATIONS ======================== */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======================== RESPONSIVE ======================== */
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .decisions-grid { grid-template-columns: 1fr; }
+  .mock-metrics { grid-template-columns: repeat(2, 1fr); }
+  .mock-table-header, .mock-row { grid-template-columns: 2fr 1fr 1fr; }
+  .mock-th:nth-child(n+4), .mock-td:nth-child(n+4) { display: none; }
+  .stats-row { gap: 24px; }
+  footer { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Ads Optimizer <span>Pro</span></a>
+  <a href="https://amazon-optimizer-rwjs.onrender.com" class="nav-cta">Essai gratuit →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">
+    <span class="dot"></span>
+    Approuvé Amazon Ads API · Vendeurs Amazon France
+  </div>
+
+  <h1>Arrêtez de <span>gaspiller</span> votre budget Amazon Ads</h1>
+
+  <p>Analysez toutes vos campagnes en 2 minutes. Sachez exactement quoi scaler, quoi couper, et quels négatifs ajouter — basé sur votre marge réelle.</p>
+
+  <div class="cta-group">
+    <a href="https://amazon-optimizer-rwjs.onrender.com" class="btn-primary">
+      Commencer l'essai gratuit →
+    </a>
+    <a href="#comment" class="btn-secondary">Voir comment ça marche</a>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num">482</div>
+      <div class="stat-label">Termes analysés en 2 min</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24%</div>
+      <div class="stat-label">ACOS moyen atteint</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">455€</div>
+      <div class="stat-label">Budget gaspillé détecté</div>
+    </div>
+  </div>
+</section>
+
+<!-- MOCKUP -->
+<div class="mockup-section">
+  <div class="mockup-wrapper">
+    <div class="mockup-bar">
+      <div class="mockup-dot" style="background:#ff5f57"></div>
+      <div class="mockup-dot" style="background:#febc2e"></div>
+      <div class="mockup-dot" style="background:#28c840"></div>
+      <div class="mockup-url">amazon-optimizer-rwjs.onrender.com</div>
+    </div>
+    <div class="mockup-content">
+      <div class="mock-metrics">
+        <div class="mock-metric">
+          <div class="mock-metric-label">Spend total</div>
+          <div class="mock-metric-value" style="color:var(--white)">648€</div>
+          <div class="mock-metric-delta" style="color:var(--gray)">Ce mois</div>
+        </div>
+        <div class="mock-metric">
+          <div class="mock-metric-label">Sales total</div>
+          <div class="mock-metric-value" style="color:var(--green)">2654€</div>
+          <div class="mock-metric-delta" style="color:var(--green)">↑ ROAS 4.09x</div>
+        </div>
+        <div class="mock-metric">
+          <div class="mock-metric-label">ACOS global</div>
+          <div class="mock-metric-value" style="color:var(--orange)">24.4%</div>
+          <div class="mock-metric-delta" style="color:var(--orange)">Cible 27%</div>
+        </div>
+        <div class="mock-metric">
+          <div class="mock-metric-label">Budget gaspillé</div>
+          <div class="mock-metric-value" style="color:var(--red)">455€</div>
+          <div class="mock-metric-delta" style="color:var(--red)">À couper</div>
+        </div>
+      </div>
+
+      <div class="mock-table">
+        <div class="mock-table-header">
+          <div class="mock-th">Terme de recherche</div>
+          <div class="mock-th">Spend</div>
+          <div class="mock-th">ACOS</div>
+          <div class="mock-th">Clics</div>
+          <div class="mock-th">Score</div>
+          <div class="mock-th">Décision</div>
+        </div>
+        <div class="mock-row">
+          <div class="mock-td">tensiomètre avec saturomètre</div>
+          <div class="mock-td">1.05€</div>
+          <div class="mock-td" style="color:var(--green)">1.4%</div>
+          <div class="mock-td">12</div>
+          <div class="mock-td" style="color:var(--green)">92</div>
+          <div class="mock-td"><span class="badge-scale">💰 SCALE</span></div>
+        </div>
+        <div class="mock-row">
+          <div class="mock-td">kit sante a domicile</div>
+          <div class="mock-td">0.12€</div>
+          <div class="mock-td" style="color:var(--green)">0.2%</div>
+          <div class="mock-td">8</div>
+          <div class="mock-td" style="color:var(--green)">88</div>
+          <div class="mock-td"><span class="badge-scale">💰 SCALE</span></div>
+        </div>
+        <div class="mock-row">
+          <div class="mock-td">appareil tension arterielle</div>
+          <div class="mock-td">1.60€</div>
+          <div class="mock-td" style="color:var(--orange)">31%</div>
+          <div class="mock-td">6</div>
+          <div class="mock-td" style="color:var(--orange)">58</div>
+          <div class="mock-td"><span class="badge-opt">⚖️ OPTIMISER</span></div>
+        </div>
+        <div class="mock-row">
+          <div class="mock-td">thermometre rectal petite taille</div>
+          <div class="mock-td">0.40€</div>
+          <div class="mock-td" style="color:var(--red)">0%</div>
+          <div class="mock-td">2</div>
+          <div class="mock-td" style="color:var(--gray)">50</div>
+          <div class="mock-td"><span class="badge-obs">⏳ DONNÉES INSUF.</span></div>
+        </div>
+        <div class="mock-row">
+          <div class="mock-td">tensiometre omron m7</div>
+          <div class="mock-td">4.20€</div>
+          <div class="mock-td" style="color:var(--red)">0%</div>
+          <div class="mock-td">9</div>
+          <div class="mock-td" style="color:var(--red)">20</div>
+          <div class="mock-td"><span class="badge-couper">❌ COUPER</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="section">
+  <div class="section-tag">Pourquoi Ads Optimizer Pro</div>
+  <h2 class="section-title">Tout ce dont vous avez besoin pour <span>maîtriser vos Ads</span></h2>
+
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon">🎯</div>
+      <div class="benefit-title">Basé sur votre marge réelle</div>
+      <div class="benefit-desc">L'ACOS cible est calculé depuis votre prix de vente et marge nette — pas une valeur générique. Les décisions sont adaptées à votre rentabilité réelle.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">📊</div>
+      <div class="benefit-title">Seuil statistique intelligent</div>
+      <div class="benefit-desc">Moins de 5 clics ? L'app affiche "Données insuffisantes" au lieu de vous induire en erreur. Fini les faux positifs sur 1 seule vente.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">⚡</div>
+      <div class="benefit-title">Multi-campagnes simultané</div>
+      <div class="benefit-desc">Uploadez tous vos CSV en une fois ou connectez directement l'API Amazon. Toutes vos campagnes analysées ensemble avec un résumé par campagne.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🔗</div>
+      <div class="benefit-title">Connexion API Amazon directe</div>
+      <div class="benefit-desc">Plus besoin d'exporter des CSV manuellement. Connectez votre compte Amazon en un clic et récupérez vos données automatiquement.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">💡</div>
+      <div class="benefit-title">Enchères recommandées précises</div>
+      <div class="benefit-desc">Le bid recommandé est calculé avec la formule CPC × (ACOS cible / ACOS actuel) — pas une simple multiplication arbitraire.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">📤</div>
+      <div class="benefit-title">Export Seller Central prêt</div>
+      <div class="benefit-desc">Exportez directement les fichiers SCALE et COUPER compatibles avec l'import bulk de Seller Central. Zéro saisie manuelle.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="comment">
+  <div class="how-inner">
+    <div class="section-tag">Processus</div>
+    <h2 class="section-title">Opérationnel en <span>2 minutes</span></h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Connectez votre compte</div>
+        <div class="step-desc">Utilisez votre identifiant Amazon pour connecter l'API en un clic — ou uploadez simplement votre rapport CSV depuis Seller Central.</div>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Renseignez votre marge</div>
+        <div class="step-desc">Entrez votre prix de vente et marge nette. L'app calcule automatiquement votre ACOS cible et seuil de rentabilité.</div>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Agissez sur les résultats</div>
+        <div class="step-desc">Recevez vos décisions SCALE / OPTIMISER / COUPER avec les enchères recommandées et exportez le fichier bulk upload.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section class="decisions-section">
+  <div class="section-tag">Décisions intelligentes</div>
+  <h2 class="section-title">4 décisions claires, <span>0 ambiguïté</span></h2>
+
+  <div class="decisions-grid">
+    <div class="decision-card">
+      <div class="decision-icon">💰</div>
+      <div>
+        <div class="decision-title">SCALE — Augmenter l'enchère</div>
+        <div class="decision-desc">ACOS inférieur à votre cible avec suffisamment de clics. Ce terme convertit bien et mérite plus de budget.</div>
+      </div>
+    </div>
+    <div class="decision-card">
+      <div class="decision-icon">⚖️</div>
+      <div>
+        <div class="decision-title">OPTIMISER — Ajuster l'enchère</div>
+        <div class="decision-desc">ACOS entre votre cible et le maximum rentable. Le terme fonctionne mais peut être amélioré avec un bid ajusté.</div>
+      </div>
+    </div>
+    <div class="decision-card">
+      <div class="decision-icon">❌</div>
+      <div>
+        <div class="decision-title">COUPER — Ajouter en négatif</div>
+        <div class="decision-desc">Spend significatif avec 0 vente et suffisamment de clics. Ce terme gaspille votre budget sans retour.</div>
+      </div>
+    </div>
+    <div class="decision-card">
+      <div class="decision-icon">⏳</div>
+      <div>
+        <div class="decision-title">DONNÉES INSUFFISANTES — Observer</div>
+        <div class="decision-desc">Moins de 5 clics ou spend trop faible. L'app attend plus de données avant de prendre une décision fiable.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <h2>Prêt à <span>stopper le gaspillage</span> ?</h2>
+  <p>Essai gratuit · Vos données restent chez vous · Aucune carte bancaire requise</p>
+  <a href="https://amazon-optimizer-rwjs.onrender.com" class="btn-primary">
+    Commencer gratuitement →
+  </a>
+  <div class="no-card">Des questions ? <a href="mailto:addarfrance@gmail.com" style="color:#555;text-decoration:none;">addarfrance@gmail.com</a></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Ads Optimizer <span>Pro</span></div>
+  <div class="footer-links">
+    <a href="https://ailteqfrance.github.io/privacy-policy.html">Politique de confidentialité</a>
+    <a href="mailto:addarfrance@gmail.com">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 AddarFrance</div>
+</footer>
+
+</body>
+</html>
